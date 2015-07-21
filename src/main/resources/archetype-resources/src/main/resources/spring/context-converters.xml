@@ -1,0 +1,57 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="addressConverter" class="${package}.populators.Converter">
+			<property name="populators">
+				<list>
+					<ref bean="addressPopulator"/>
+				</list>
+			</property>
+	</bean>
+
+	<bean id="addressReverseConverter" class="${package}.populators.Converter">
+			<property name="populators">
+				<list>
+					<ref bean="addressReversePopulator"/>
+				</list>
+			</property>
+	</bean>
+	
+	<bean id="signupFormConverter" class="${package}.populators.Converter">
+			<property name="populators">
+				<list>
+					<ref bean="signupFormPopulator"/>
+				</list>
+			</property>
+	</bean>
+
+	<bean id="accountFormConverter" class="${package}.populators.Converter">
+			<property name="populators">
+				<list>
+					<ref bean="accountFormPopulator"/>
+				</list>
+			</property>
+	</bean>
+
+	<bean id="accountFormReverseConverter" class="${package}.populators.Converter">
+			<property name="populators">
+				<list>
+					<ref bean="accountFormReversePopulator"/>
+				</list>
+			</property>
+	</bean>
+
+	<bean id="fileFormConverter" class="${package}.populators.Converter">
+			<property name="populators">
+				<list>
+					<ref bean="fileFormPopulator"/>
+				</list>
+			</property>
+	</bean>
+
+</beans>
