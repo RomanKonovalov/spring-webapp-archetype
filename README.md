@@ -2,7 +2,7 @@
 
 ## About
 
-It's a spring base web application archetype with the following basic functionality:
+It's a spring based web application archetype with the following basic functionality:
 
   *  Security (embedded Admin and User roles).
   *  Roles and accounts administration.
