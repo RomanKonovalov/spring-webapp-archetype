@@ -63,16 +63,9 @@
                     <form:input cssClass="form-control" path="lastName" id="lastName" maxlength="50" />
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-sm-6 form-group">
-                    <label for="phoneNumber" class="control-label"><fmt:message key="updateAccount.phoneNumber" />:</label>
-                    <form:input cssClass="form-control" path="phoneNumber" id="phoneNumber" />
-                </div>
-                <div class="col-sm-6 form-group">
-                    <label for="website" class="control-label"><fmt:message key="updateAccount.website" />:</label>
-                    <form:input cssClass="form-control" path="website" id="website" />
-                </div>
+            <div class="form-group">
+                <label for="website" class="control-label"><fmt:message key="updateAccount.website" />:</label>
+                <form:input cssClass="form-control" path="website" id="website" />
             </div>
 
             <div>
@@ -80,36 +73,40 @@
                     <a data-toggle="collapse" href="${symbol_pound}collapse-address"><fmt:message key="updateAccount.address.address" /></a>
                 </legend>
                 <div id="collapse-address" class="accordion-body collapse">
+                    
                     <div class="form-group">
-                        <label for="address.address" class="control-label"><fmt:message
-                                key="updateAccount.address.address" />:</label>
-                        <form:input cssClass="form-control" path="address.address" id="address.address" />
+                        <label for="address.country" class="control-label"><fmt:message
+                                key="signup.address.country" />:</label>
+                        <c:set value="${symbol_dollar}{empty form.address.country ? pageContext.request.locale.country : form.address.country}" var="country"/>
+                        <form:select id="countries" path="address.country" cssClass="form-control input-medium bfh-countries" data-country="${symbol_dollar}{country}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="address.province" class="control-label"><fmt:message
+                                key="signup.address.province" />:</label>
+                        <form:select path="address.province" cssClass="form-control input-medium bfh-states" data-country="countries" data-state="${symbol_dollar}{form.address.province}" />
                     </div>
                     <div class="row">
                         <div class="col-sm-7 form-group">
                             <label for="address.city" class="control-label"><fmt:message
-                                    key="updateAccount.address.city" />:</label>
+                                    key="signup.address.city" />:</label>
                             <form:input cssClass="form-control" path="address.city" id="address.city" />
-                        </div>
-                        <div class="col-sm-5 form-group">
-                            <label for="address.province" class="control-label"><fmt:message
-                                    key="updateAccount.address.province" />:</label>
-                            <form:input cssClass="form-control" path="address.province" id="address.province" />
                         </div>
                         <div class="col-sm-4 form-group">
                             <label for="address.postalCode" class="control-label"><fmt:message
-                                    key="updateAccount.address.postalCode" />:</label>
+                                    key="signup.address.postalCode" />:</label>
                             <form:input cssClass="form-control" path="address.postalCode" id="address.postalCode" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="address.country" class="control-label"><fmt:message
-                                key="updateAccount.address.country" />:</label>
-                        <form:select path="address.country" cssClass="form-control">
-                            <form:option selected="true" value="" />
-                            <form:options items="${symbol_dollar}{allCountries}" />
-                        </form:select>
+                        <label for="address.address" class="control-label"><fmt:message
+                                key="signup.address.address" />:</label>
+                        <form:input cssClass="form-control" path="address.address" id="address.address" />
                     </div>
+                    <div class="form-group">
+                        <label for="phoneNumber" class="control-label"><fmt:message key="updateAccount.phoneNumber" />:</label>
+                        <form:input path="phoneNumber" type="text" cssClass="form-control input-medium bfh-phone" data-country="countries" id="phoneNumber" />
+                    </div>
+                    
                 </div>
             </div>
 

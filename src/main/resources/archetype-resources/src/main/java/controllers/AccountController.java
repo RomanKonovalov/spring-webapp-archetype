@@ -4,9 +4,6 @@
 package ${package}.controllers;
 
 import java.beans.PropertyEditorSupport;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import javax.persistence.EntityExistsException;
 import javax.servlet.http.HttpServletRequest;
@@ -93,17 +90,6 @@ public class AccountController {
                 setValue(role);
             }
         });
-    }
-
-    @ModelAttribute(value = "allCountries")
-    public List<String> getAllCountries() {
-        final String[] locales = Locale.getISOCountries();
-        final List<String> countries = new ArrayList<String>();
-
-        for (final String countryCode : locales) {
-            countries.add(new Locale("", countryCode).getDisplayCountry());
-        }
-        return countries;
     }
 
     @RequestMapping(method = RequestMethod.PUT)

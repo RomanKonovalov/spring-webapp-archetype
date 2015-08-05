@@ -7,6 +7,7 @@
 
 <spring:eval expression="@propertyConfigurer.getProperty('admin.role')" var="adminRole" />
 <spring:eval expression="@propertyConfigurer.getProperty('user.role')" var="userRole" />
+<spring:eval expression="@propertyConfigurer.getProperty('app.availableLanguages')" var="availableLanguages" />
 
 
 <!DOCTYPE html>
@@ -21,8 +22,10 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/core.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/sticky-footer.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap-formhelpers.min.css"/>" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/resources/js/bootstrap-formhelpers.min.js"/>"></script>
 <link rel="icon" href="<c:url value="/resources/images/favicon.ico"/>" />
 <title><fmt:message key="webapp.name" /></title>
 <title><fmt:message key="home.title" /></title>
@@ -30,17 +33,7 @@
 </head>
 <body>
 
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<c:url value='/'/>"><fmt:message key="webapp.name" /></a>
-        </div>
-
-        <%@ include file="/WEB-INF/common/menu.jsp"%>
-
-    </div>
+    <%@ include file="/WEB-INF/common/menu.jsp"%>
 
     <div class="container" id="content">
         <%@ include file="/WEB-INF/common/messages.jsp"%>

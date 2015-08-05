@@ -1,8 +1,23 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-<div class="collapse navbar-collapse" id="navbar">
-    <ul class="nav navbar-nav">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="${symbol_pound}bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=""><fmt:message key="webapp.name" /></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      
         <c:if test="${symbol_dollar}{empty pageContext.request.remoteUser}">
             <li class="active"><a href="<c:url value="/account/signin"/>"><fmt:message key="login.title" /></a></li>
         </c:if>
@@ -33,7 +48,15 @@
         <security:authorize access="isAuthenticated()">
             <li><a href="<c:url value="/account/logout"/>"><fmt:message key="user.logout" /></a></li>
         </security:authorize>
+        
+      </ul>
+      
+      <form class="navbar-form navbar-right">
+      	<select class="form-control input-medium bfh-languages" data-language="${symbol_dollar}{pageContext.response.locale}" data-available="${symbol_dollar}{availableLanguages}" onchange="${symbol_dollar}.get('?lang='+this.value);location.reload();"></select>
+      </form>
 
-    </ul>
-</div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 

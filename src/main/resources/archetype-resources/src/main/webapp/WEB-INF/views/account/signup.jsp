@@ -69,10 +69,6 @@
                         <form:errors path="email" cssClass="help-block" />
                     </div>
                 </spring:bind>
-                <div class="col-sm-6 form-group">
-                    <label for="phoneNumber" class="control-label"><fmt:message key="signup.phoneNumber" />:</label>
-                    <form:input cssClass="form-control" path="phoneNumber" id="phoneNumber" />
-                </div>
             </div>
             <div class="form-group">
                 <label for="website" class="control-label"><fmt:message key="signup.website" />:</label>
@@ -84,20 +80,21 @@
                 </legend>
                 <div id="collapse-address" class="accordion-body collapse">
                     <div class="form-group">
-                        <label for="address.address" class="control-label"><fmt:message
-                                key="signup.address.address" />:</label>
-                        <form:input cssClass="form-control" path="address.address" id="address.address" />
+                        <label for="address.country" class="control-label"><fmt:message
+                                key="signup.address.country" />:</label>
+                        <form:select id="countries" path="address.country" cssClass="form-control input-medium bfh-countries" data-country="${symbol_dollar}{pageContext.request.locale.country}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address.province" class="control-label"><fmt:message
+                                key="signup.address.province" />:</label>
+                        <%-- <form:input cssClass="form-control" path="address.province" id="address.province" /> --%>
+                        <form:select path="address.province" cssClass="form-control input-medium bfh-states" data-country="countries" />
                     </div>
                     <div class="row">
                         <div class="col-sm-7 form-group">
                             <label for="address.city" class="control-label"><fmt:message
                                     key="signup.address.city" />:</label>
                             <form:input cssClass="form-control" path="address.city" id="address.city" />
-                        </div>
-                        <div class="col-sm-5 form-group">
-                            <label for="address.province" class="control-label"><fmt:message
-                                    key="signup.address.province" />:</label>
-                            <form:input cssClass="form-control" path="address.province" id="address.province" />
                         </div>
                         <div class="col-sm-4 form-group">
                             <label for="address.postalCode" class="control-label"><fmt:message
@@ -106,13 +103,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="address.country" class="control-label"><fmt:message
-                                key="signup.address.country" />:</label>
-                        <form:select path="address.country" cssClass="form-control">
-                            <c:forEach items="${symbol_dollar}{allCountries}" var="country">
-                                <option value="${symbol_dollar}{country}" ${symbol_dollar}{country == defaultCountry ? 'selected' : ''}>${symbol_dollar}{country}</option>
-                            </c:forEach>
-                        </form:select>
+                        <label for="address.address" class="control-label"><fmt:message
+                                key="signup.address.address" />:</label>
+                        <form:input cssClass="form-control" path="address.address" id="address.address" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber" class="control-label"><fmt:message key="updateAccount.phoneNumber" />:</label>
+                        <form:input path="phoneNumber" type="text" cssClass="form-control input-medium bfh-phone" data-country="countries" id="phoneNumber" />
                     </div>
                 </div>
             </div>
